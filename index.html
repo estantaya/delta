@@ -8,6 +8,40 @@
             --glow-color: #2ecc71;
             --bg-color: #050505;
         }
+        /* Contenedor del video con estética de monitor viejo */
+.video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    margin: 20px 0;
+    border: 3px solid #2ecc71;
+    box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+    overflow: hidden;
+}
+
+/* Filtro que "rompe" el video de YouTube para que parezca de la Netbook */
+.video-frame iframe {
+    width: 100%;
+    height: 315px;
+    filter: sepia(100%) hue-rotate(90deg) contrast(150%) brightness(0.8) blur(0.3px);
+    -webkit-filter: sepia(100%) hue-rotate(90deg) contrast(150%) brightness(0.8);
+    opacity: 0.8;
+}
+
+/* Capa de interferencia sobre el video */
+.video-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none; /* Permite hacer clic al video abajo */
+    z-index: 5;
+}
         body {
             background-color: var(--bg-color);
             color: var(--glow-color);
@@ -88,6 +122,16 @@
     <div class="container">
         <h1 class="glitch-text">SISTEMA LAZARUS [BÚNKER CONECTADO]</h1>
         
+<div class="video-frame">
+    <div class="video-overlay"></div>
+    <iframe 
+        src="https://www.youtube.com/embed/x0vogMSuAJk?rel=0&modestbranding=1&controls=1&showinfo=0&autohide=1" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
+</div>
+
         <div class="status-box">
             <p>> SUJETO: Superviviente_01</p>
             <p>> ENTIDAD DELTA: <span style="color: #e74c3c;">AVISTADA EN SECTOR MINA</span></p>
